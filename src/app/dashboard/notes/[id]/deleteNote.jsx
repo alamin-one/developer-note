@@ -5,6 +5,7 @@ import Button from '@/components/ui/button';
 import { handleActionAlert, showConfirmDialog } from '@/lib/handleAlart';
 import { Trash2 } from 'lucide-react';
 
+
 const DeleteNote = ({ id }) => {
   const handleDeleteNote = async () => {
     const confrim = await showConfirmDialog();

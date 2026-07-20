@@ -1,21 +1,45 @@
 'use client';
-import Button from '@/components/ui/button';
+
+import { useEffect, useState } from 'react';
+import Link from 'next/link';
+import { redirect, useSearchParams } from 'next/navigation';
 import { Book, LogOut, MenuIcon, Plus, Undo2, User, X } from 'lucide-react';
+import { getAllNotes } from '@/actions/noteAction';
+
+import NoteCard from './noteCard';
+import Button from '@/components/ui/button';
 import TagCard from './tagCard';
 import Search from '@/components/ui/search';
 import clsx from 'clsx';
 
-import { useState } from 'react';
-import Link from 'next/link';
-import NoteCard from './noteCard';
-import { redirect } from 'next/navigation';
-
-const DashboardLayout = ({ tags, notes, currentUser, logOutUser, search }) => {
+const DashboardLayout = ({ tags, currentUser, logOutUser, search }) => {
+  const [notes, setNotes] = useState();
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const params = useSearchParams();
 
   if (!currentUser) {
     redirect('/login');
   }
+
+  useEffect(() => {
+    const n = async () => {
+      const rowparams = Object.fromEntries(params);
+      const filtredParams = Object.fromEntries(
+        Object.entries(rowparams).filter(
+          ([_, value]) =>
+            value !== undefined &&
+            value !== '' &&
+            value !== ' ' &&
+            value !== "''",
+        ),
+      );
+
+      const notes = await getAllNotes(filtredParams);
+      setNotes(notes);
+    };
+    n();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [params.toString()]);
 
   return (
     <>

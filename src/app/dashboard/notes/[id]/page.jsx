@@ -1,11 +1,20 @@
-import { getNoteById } from '@/actions/noteAction';
+ 
+import Link from 'next/link';
+import { getAllNotes, getNoteById } from '@/actions/noteAction';
 import Button from '@/components/ui/button';
 import { Edit, Undo2 } from 'lucide-react';
-import Link from 'next/link';
-import React from 'react';
 import DeleteNote from './deleteNote';
 import Badeg from '@/components/ui/badeg';
 import clsx from 'clsx';
+
+export const dynamicParams = true;
+export async function generateStaticParams() {
+  const note = await getAllNotes();
+  if (!note || !Array.isArray(note)) {
+    return [];
+  }
+  return note.map(item => ({ id: item.id }));
+}
 
 const SingleNotepage = async ({ params }) => {
   const { id } = await params;

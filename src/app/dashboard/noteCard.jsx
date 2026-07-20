@@ -1,11 +1,10 @@
-import { Book, Edit, Eye, Trash2 } from 'lucide-react';
-
-import Badeg from '@/components/ui/badeg';
-import Card from '@/components/ui/card';
-import Button from '@/components/ui/button';
 import Link from 'next/link';
-import clsx from 'clsx';
+import { Edit, Eye } from 'lucide-react';
+import Badeg from '@/components/ui/badeg';
+import Button from '@/components/ui/button';
 import DeleteNote from './notes/[id]/deleteNote';
+import Card from '@/components/ui/card';
+import clsx from 'clsx';
 
 const NoteCard = ({ item }) => {
   const date = new Date(item?.createdAt).toDateString();
