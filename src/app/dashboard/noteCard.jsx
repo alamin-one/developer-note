@@ -26,14 +26,12 @@ const NoteCard = ({ item }) => {
         ))}
       </div>
       <div className="mt-5 flex gap-2 flex-wrap">
-        <Link href={`http://localhost:3000/dashboard/notes/${item.id}`}>
+        <Link href={`/dashboard/notes/${item.id}`}>
           <Button variant={'green'} size={'sm'}>
             <Eye size={12} /> View
           </Button>
         </Link>
-        <Link
-          href={`http://localhost:3000/dashboard/notes/add?edit=${item.id}`}
-        >
+        <Link href={`/dashboard/notes/add?edit=${item.id}`}>
           <Button variant={'blue'} size={'sm'}>
             <Edit size={12} /> Edit
           </Button>
