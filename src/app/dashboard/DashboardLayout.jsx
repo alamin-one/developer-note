@@ -12,11 +12,14 @@ import TagCard from './tagCard';
 import Search from '@/components/ui/search';
 import clsx from 'clsx';
 
-const DashboardLayout = ({ tags, currentUser, logOutUser, search }) => {
+const DashboardLayout = ({ tags, currentUser, logOutUser }) => {
   const [notes, setNotes] = useState();
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const params = useSearchParams();
+  const search = params.search;
 
+
+  
   if (!currentUser) {
     redirect('/login');
   }

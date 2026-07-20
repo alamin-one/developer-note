@@ -24,7 +24,7 @@ const TagCard = ({ tags }) => {
   return (
     <>
       <ul className="space-y-5">
-        {tags.map(tag => (
+        {tags?.map(tag => (
           <li
             onClick={() => handleTagFilter(tag.name)}
             key={tag.id}

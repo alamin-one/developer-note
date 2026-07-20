@@ -38,8 +38,6 @@ const NoteCard = ({ item }) => {
             <Edit size={12} /> Edit
           </Button>
         </Link>
-
-        <DeleteNote id={item.id} />
       </div>
     </Card>
   );
