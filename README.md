@@ -11,6 +11,7 @@ A simple, focused note-taking application built for **developers**. This project
 ![License](https://img.shields.io/badge/License-MIT-green)
  
 ---
+
  
 ##  Live Demo
  
